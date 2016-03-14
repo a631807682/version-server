@@ -1,5 +1,5 @@
 var appVersionCtrl = require('../../controller/appVersionCtrl.js');
-
+var uploadCtrl = require('../../controller/uploadCtrl.js');
 
 /**
  * 版本管理路由
@@ -23,5 +23,11 @@ module.exports = function(server) {
         version: '0.0.1'
     }, appVersionCtrl.setAppVersion);
 
+    //上传app
+    //appId,platform,[file]
+    server.post({
+        path: '/uploadApp',
+        version: '0.0.1'
+    }, uploadCtrl.uploadApp);
 
 }

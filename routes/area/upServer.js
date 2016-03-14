@@ -12,11 +12,11 @@ module.exports = function(server) {
 
     //====App通信路由====
 
-    //更新检测
-    server.post({
-        path: '/api/v1/apps/:app_id/updates/check',
-        version: '0.0.1'
-    }, appVersionCtrl.checkAppVersion);
+    // //更新检测
+    // server.post({
+    //     path: '/api/v1/apps/:app_id/updates/check',
+    //     version: '0.0.1'
+    // }, appVersionCtrl.checkAppVersion);
 
     //新更新检测
     server.post({

@@ -11,16 +11,16 @@ module.exports = {
     //上传app 
     //根据版本兼容情况上传www.zip包或.apk/.ipa
     uploadApp: function(req, res, done) {
-    	
-    	//其他参数
+        console.log('==uploadApp==',req.params,req.files);
+            //其他参数
         var appId = req.params.appId;
-        var appName = req.params.appName;
+        var platform = req.params.platform;
         //文件参数
         var type = getFileType(req.files.file.name);
         var sourcePath = req.files.file.path;
 
         var dirPath = PATH + '/' + appId;
-        var fullPath = dirPath + '/' + appName + '.' + type;
+        var fullPath = dirPath + '/' + platform + '/www.zip';
 
         async.series([
             //创建app文件夹
@@ -42,6 +42,17 @@ module.exports = {
 
             }
         ], function(err, results) {
+            if (!err) {
+                res.json({
+                    status: true
+                });
+                res.end();
+            } else {
+                res.json({
+                    status: false
+                });
+                res.end();
+            }
 
         })
 
